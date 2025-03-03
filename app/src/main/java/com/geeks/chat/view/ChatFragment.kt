@@ -11,6 +11,7 @@ import android.widget.EditText
 import com.example.telegram.view.adapters.ChatAdapter
 import com.geeks.chat.databinding.FragmentChatBinding
 import com.geeks.chat.model.models.MessageResponse
+import com.geeks.chat.viewmodel.ChatViewModel
 
 class ChatFragment : Fragment() {
 
@@ -69,7 +70,7 @@ class ChatFragment : Fragment() {
         binding.apply {
             recyclerView.adapter = adapter
             button.setOnClickListener {
-                viewModel.sendMessage(10, editText.text.toString(), 555, 777)
+                viewModel.sendMessage(10, editText.text.toString(), 222.toString(), 333.toString())
                 editText.text.clear()
             }
         }

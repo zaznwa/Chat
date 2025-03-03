@@ -26,10 +26,11 @@ object RetrofitClient {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(httpClient)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
     val chatService: ChatService by lazy {
         retrofit.create(ChatService::class.java)
     }
+
 }

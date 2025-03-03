@@ -13,28 +13,30 @@ import retrofit2.http.Path
 interface ChatService {
 
     @GET("chat/{chatId}")
-    suspend fun getChat(@Path("chatId") chatId: Int): List<MessageResponse>
+    suspend fun getChat(
+        @Path("chatId") chatId: Int,
+    ): List<MessageResponse>
 
     @FormUrlEncoded
-    @POST("chat/{send}")
+    @POST("chat/send")
     suspend fun sendMessage(
         @Field("chatId") chatId: Int,
         @Field("message") message: String,
-        @Field("senderId") senderId: Int,
-        @Field("receiverId") receiverId: Int,
-    ): MessageResponse
+        @Field("senderId") senderId: String,
+        @Field("receiverId") receiverId: String,
+    ):MessageResponse
+
+    @DELETE ("chat/{chatId}/message/{messageId}")
+    suspend fun deleteMessage(
+        @Path("chatId") chatId: Int,
+        @Path("messageId") messageId: Int,
+    )
 
     @FormUrlEncoded
-    @PUT("chat/{chatId}/message/{messageId}")
+    @PUT ("chat/{chatId}/message/{messageId}")
     suspend fun updateMessage(
         @Path("chatId") chatId: Int,
         @Path("messageId") messageId: Int,
         @Field("newMessage") newMessage: String,
-    ): MessageResponse
-
-    @DELETE("chat/{chatId}/message/{messageId}")
-    suspend fun deleteMessage(
-        @Path("chatId") chatId: Int,
-        @Path("messageId") messageId: Int,
-    ): MessageResponse
+    )
 }

@@ -1,4 +1,4 @@
-package com.geeks.chat.view
+package com.geeks.chat.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -26,7 +26,7 @@ class ChatViewModel : ViewModel() {
         }
     }
 
-    fun sendMessage(chatId: Int, message: String, senderId: Int, receiverId: Int) {
+    fun sendMessage(chatId: Int, message: String, senderId: String, receiverId: String) {
         viewModelScope.launch {
             try {
                 repository.sendMessage(chatId, message, senderId, receiverId)
